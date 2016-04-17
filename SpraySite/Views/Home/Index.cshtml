@@ -1,0 +1,24 @@
+﻿@model SpraySite.Models.SprayListModel
+
+@{
+    ViewBag.Title = "Home - Spray Maker v3";
+}
+<br />
+<div class="hero-unit">
+    <h1>Welcome to Spray Maker v3</h1>
+    New Features in this release:
+    <ul>
+        <li>Sign in to save your sprays!</li>
+        <li>Cooler looking!</li>
+        <li>Less compatible! <small>(Sorry, IE9 users!)</small></li>
+        <li style="text-decoration:line-through">Cheaper to host!</li>
+        <li>Slightly more <a href="https://bitbucket.org/CodyJung/spraymakerv3/issues" title="Report one!">bugs</a>! <small>(You can also complain to <a href="http://twitter.com/cjung">@@cjung</a> or <a href="http://reddit.com/user/JustThisGuyYouKnow">JustThisGuyYouKnow</a>)</small></li>
+    </ul>
+    <p>
+        <a class="btn btn-primary btn-large" href="@Url.Action("Static", "Create")">Get started
+        </a>
+    </p>
+</div>
+
+@*<h3>Recently Uploaded</h3>
+@Html.Partial("BrowseLoop")*@

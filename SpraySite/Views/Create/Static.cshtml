@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Create a Spray - Spray Maker v3";
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/staticBundle")
+}
+
+@{
+    Html.RenderPartial("WarningBox");
+}
+
+<div class="row">
+    <div class="span5">
+        <h1>Create a spray</h1>
+        <ul>
+            <li>Final spray sizes must be under 512kB
+                <ul>
+                    <li>you may need to remove frames or resize .gifs</li>
+                    <li>Sprays with transparency are also a lot bigger</li>
+                </ul>
+            </li>
+            <li>Uploaded images must also be under 512kB</li>
+            <li>Image processing takes a while. Be patient!</li>
+        </ul>
+
+        <form id="imageUpload" enctype="multipart/form-data" method="post">
+            <fieldset>
+                <legend>Upload an image</legend>
+                <div id="fileUpload1" class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="input-append">
+                        <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i><span class="fileupload-preview"></span></div>
+                        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input id="imageInput" name="image" type="file" accept="image/*" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+                <label class="checkbox">
+                    <input type="checkbox" name="transparency" id="transparency">
+                    <p>Use higher quality compression (bigger files)</p>
+                </label>
+            </fieldset>
+        </form>
+        <button id="submitButton" class="btn btn-primary">Spray!</button>
+
+    </div>
+    <div class="span7">
+        <h2>Progress</h2>
+        <div id="progress" class="well well-small">
+            Upload:
+            <div id="uploadProgress" class="progress progress-striped active">
+                <div id="uploadProgressBar" class="bar" style="width: 0%;"></div>
+            </div>
+
+            Processing:
+            <div id="processProgress" class="progress progress-striped active">
+                <div id="processProgressBar" class="bar" style="width: 0%;"></div>
+            </div>
+
+            Saving:
+            <div id="savingProgress" class="progress progress-striped active">
+                <div id="savingProgressBar" class="bar" style="width: 0%;"></div>
+            </div>
+
+            <div id="resultsDiv">
+                @if(Request.IsAuthenticated){
+                    @:<a href="#" id="detailsLink">
+                }
+                    <div class="imageWrapper">
+                        <div class="flagContainer">
+                            <span class="label label-success sprayFlag fadingFlag"><i class="icon-random icon-white"></i> Fading</span>
+                            <span class="label label-info sprayFlag animatedFlag"><i class="icon-play icon-white"></i> Animated</span>
+                            <span class="label label-important sprayFlag nsfwFlag"><i class="icon-eye-open icon-white"></i> NSFW</span>
+                        </div>
+                        <div class="imageDiv"><img src="@Url.Content("~/Content/images/ajax_loader.gif")" alt="Loading spray" class="loadingSpinner" /></div>
+                    </div>
+                @if(Request.IsAuthenticated){
+                    @:</a>
+                }
+                <div id="linksDiv" class="text-center">
+                    <a id="downloadLink" class="btn btn-small btn-primary">Download .VTF spray</a>
+                    <a id="vmtLink" class="btn btn-small">Download .VMT texture</a>
+
+                    @if(Request.IsAuthenticated)
+                    {
+                        <a id="shareLink" class="btn btn-small btn-success">Details</a>
+                    }
+
+                    <br /><br />
+                    Save both of the above files to:<br />
+                    <code><abbr title="Win: C:\Program Files (x86)\Steam&#13;Mac: &#126;/Library/Application Support/Steam&#13;Linux: &#126;/.local/share/Steam">&lt;Steam folder&gt;</abbr>\steamapps\common\Team Fortress 2\tf\materials\vgui\logos\</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+﻿@model SpraySite.Models.SprayViewModel
+
+@{
+    ViewBag.Title = "View Spray - Spray Maker v3";
+}
+
+@if (Model.Spray.Status == SpraySite.Models.Status.UNLISTED)
+{
+@*    <div class="alert alert-warning text-center">
+        This spray is <strong>unlisted</strong>. Only those with the link can view it.
+    </div>*@
+} 
+else if(Model.Spray.Status == SpraySite.Models.Status.UNMODERATED && Model.IsCurrentUsersSpray)
+{
+    @*<div class="alert alert-warning text-center">
+        Your spray is currently pending moderation. It will be added to the gallery once it has been approved.
+    </div>*@
+}
+else if(Model.Spray.Status == SpraySite.Models.Status.UNMODERATED && !Model.IsCurrentUsersSpray)
+{
+    @*<div class="alert alert-warning text-center">
+        This spray is currently pending moderation. It will be added to the gallery once it has been approved.
+    </div>*@
+}
+else if(Model.Spray.Status == SpraySite.Models.Status.ACTIVE && Model.IsCurrentUsersSpray)
+{
+    <div class="alert alert-warning text-center">
+        This spray is <strong>private</strong>. Sharing this link with others will not work. 
+    </div>
+}
+
+
+@if (Model.Spray.Status == SpraySite.Models.Status.DELETED)
+{
+    <div class="alert alert-error text-center">
+        <b>Oh no!</b> This spray has been deleted!
+    </div>
+}
+else if (Model.Spray.DateExpires <= DateTime.Now)
+{
+    <div class="alert alert-error text-center">
+        <b>Oh no!</b> This spray was made by an anonymous user and has expired.
+    </div>
+}
+else
+{
+    <div class="row">
+
+        <div class="span6">
+
+            <h2>Spray Details</h2>
+
+            <table class="table">
+                <tr>
+                    <td>Spray ID</td>
+                    <td>@Model.Spray.Id</td>
+                </tr>
+                <tr>
+                    <td>Uploaded</td>
+                    <td>@Model.Spray.DateAdded.ToShortDateString()</td>
+                </tr>
+                <tr>
+                    <td>Fading</td>
+                    <td>@Model.Spray.Fading</td>
+                </tr>
+                <tr>
+                    <td>Animated</td>
+                    <td>@Model.Spray.Animated</td>
+                </tr>
+                <tr>
+                    <td>Safeness</td>
+                    @if(Model.Spray.Safeness == SpraySite.Models.Safeness.NSFW)
+                    {
+                        <td>NSFW</td>
+                    }
+                    else if (Model.Spray.Safeness == SpraySite.Models.Safeness.SKETCHY)
+                    {
+                        <td>Sketchy</td>
+                    }
+                    else if(Model.Spray.Safeness == SpraySite.Models.Safeness.SFW && Model.Spray.Status == SpraySite.Models.Status.PUBLIC)
+                    {
+                        <td>Clean</td>
+                    } 
+                    else
+                    {
+                        <td>Uncategorized</td>   
+                    }
+                </tr>
+                <tr>
+                    <td>Saves</td>
+                    <td>@Model.Spray.Saves</td>
+                </tr>
+            </table>
+
+            <div class="row">
+                <div id="linksDiv" class="text-center">
+                    <a id="downloadLink" class="btn btn-small btn-primary" href="@Model.Spray.Url">Download .VTF spray</a>
+                    <a id="vmtLink" class="btn btn-small" href="@Url.Action("VMT", "Create", new { id = Model.Spray.Id })">Download .VMT texture</a>
+
+                    @if (Request.IsAuthenticated && !Model.SavedByCurrent)
+                    {
+                        <a id="saveLink" class="btn btn-small btn-warning" href="@Url.Action("Save", "Spray", new { id = Model.Spray.Id })"><i class="icon-star icon-white"></i> Add to Saved</a>
+                    }
+                    else if (Request.IsAuthenticated && Model.SavedByCurrent)
+                    {
+                        <a id="saveLink" class="btn btn-small btn-warning disabled" href="@Url.Action("Unsave", "Spray", new { id = Model.Spray.Id })"><i class="icon-star icon-white"></i> Remove from Saved</a>
+                    }
+                </div>
+            </div>
+
+            <div class="row text-center">
+                To install, save both the VTF and VMT files to:<br />
+                <code><abbr title="Win: C:\Program Files (x86)\Steam&#13;Mac: &#126;/Library/Application Support/Steam&#13;Linux: &#126;/.local/share/Steam">&lt;Steam folder&gt;</abbr>\steamapps\common\Team Fortress 2\tf\materials\vgui\logos\</code>
+            </div>
+
+            <div class="row text-center">
+                @if (Request.IsAuthenticated && (Model.IsCurrentUsersSpray || User.Identity.Name == "76561197999489042"))
+                {                    
+                    <h3>Manage Spray</h3>
+                    
+                    <div class="btn-group">
+                        <a class="btn btn-small btn-success dropdown-toggle" data-toggle="dropdown" href="#">Publish Options
+                        <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu text-left">
+                            <li>
+                                <a class="publishLink" href="@Url.Action("Privatize", "Spray", new { id = Model.Spray.Id })">
+                                    Private 
+                                    @if(Model.Spray.Status == SpraySite.Models.Status.ACTIVE){
+                                        <i class="icon-ok"></i> 
+                                    }
+                                </a>
+                            </li>
+                            @*<li>
+                                <a class="publishLink" href="@Url.Action("Unlist", "Spray", new { id = Model.Spray.Id })">
+                                    Unlisted 
+                                    @if(Model.Spray.Status == SpraySite.Models.Status.UNLISTED){
+                                        <i class="icon-ok"></i>
+                                    }
+                                </a>
+                            </li>*@
+                            <li>
+                                <a class="publishLink" href="@Url.Action("Publish", "Spray", new { id = Model.Spray.Id })">
+                                    Public
+                                    @if (Model.Spray.Status == SpraySite.Models.Status.PUBLIC || Model.Spray.Status == SpraySite.Models.Status.UNMODERATED){
+                                        <i class="icon-ok"></i> 
+                                    }
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a id="deleteLink" class="btn btn-small btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="icon-remove icon-white"></i> Delete Spray</a>
+
+                    <!-- Modal -->
+                    <div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Confirm delete?</h3>
+                      </div>
+                      <div class="modal-footer">
+                        <a class="btn btn-danger btn-small" href="@Url.Action("Delete", "Spray", new { id = Model.Spray.Id })">DELETE</a>
+                        <button class="btn btn-small" data-dismiss="modal" aria-hidden="true">Nevermind</button>
+                      </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+
+        <div class="span6">
+
+            <h2>Preview</h2>
+            <div class="previewContainer">
+                <div class="imageWrapper">
+                    <div class="flagContainer">
+                        @if (Model.Spray.Fading)
+                        {
+                            <span class="label label-success fadingFlag" title="Fading"><i class="icon-random icon-white"></i></span>
+                        }
+
+                        @if (Model.Spray.Animated)
+                        {
+                            <span class="label label-info animatedFlag" title="Animated"><i class="icon-play icon-white"></i></span>
+                        }
+
+                        @if (Model.Spray.NSFW || Model.Spray.Safeness == SpraySite.Models.Safeness.NSFW)
+                        {
+                            <span class="label label-important nsfwFlag"><i class="icon-eye-open icon-white"></i>NSFW</span>
+                        }
+                                                
+                        @if (Model.Spray.NSFW || Model.Spray.Safeness == SpraySite.Models.Safeness.SKETCHY)
+                        {
+                            <span class="label label-warning nsfwFlag"><i class="icon-eye-open icon-white"></i>SKETCHY</span>
+                        }
+
+                        @if (Model.Spray.Saves > 0)
+                        {
+                            <span class="label label-warning savesFlag" title="Saves"><i class="icon-star icon-white"></i>@Model.Spray.Saves</span>
+                        }
+
+                    </div>
+                    <div class="imageDiv farImage">
+                        <img src="@Model.Spray.PreviewImage" alt="@Model.Spray.Id Preview" />
+                    </div>
+
+                    @if (Model.Spray.Fading)
+                    {
+                        <div class="imageDiv nearImage">
+                            <img src="@Model.Spray.PreviewImageNear" alt="@Model.Spray.Id Near Preview" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

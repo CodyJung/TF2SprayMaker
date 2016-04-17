@@ -1,0 +1,24 @@
+﻿<h2>Browse Sprays</h2>
+
+<ul class="nav nav-pills">
+    <li class="@(ViewBag.BrowseMode == "newest" ? "active" : "")">
+        <a href="@Url.Action("Newest", "Browse")">Newest</a>
+    </li>
+    <li class="@(ViewBag.BrowseMode == "top" ? "active" : "")">
+        <a href="@Url.Action("Top", "Browse")">Top Saved</a>
+    </li>
+    
+    <li class="@(ViewBag.BrowseMode == "newestsketchy" ? "active" : "")">
+        <a href="@Url.Action("NewestSketchy", "Browse")">Newest Sketchy</a>
+    </li>
+    <li class="@(ViewBag.BrowseMode == "topsketchy" ? "active" : "")">
+        <a href="@Url.Action("TopSketchy", "Browse")">Top Saved Sketchy</a>
+    </li>
+    
+    <li class="@(ViewBag.BrowseMode == "newestnsfw" ? "active" : "")">
+        <a href="@Url.Action("NewestNSFW", "Browse")">Newest NSFW</a>
+    </li>
+    <li class="@(ViewBag.BrowseMode == "topnsfw" ? "active" : "")">
+        <a href="@Url.Action("TopNSFW", "Browse")">Top Saved NSFW</a>
+    </li>
+</ul>

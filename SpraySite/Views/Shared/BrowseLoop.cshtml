@@ -1,0 +1,62 @@
+﻿@model SpraySite.Models.SprayListModel
+
+@for (int i = 0; i < Model.Sprays.Count; i++)
+{
+    
+    if (i % 3 == 0)
+    {
+        @:<div class="row">
+    }
+
+    <div class="span4">
+        <div class="previewContainer">
+            <a href="@Url.Action(Model.Sprays.ElementAt(i).Id.ToString(), "Spray")">
+                <div class="imageWrapper">
+                    <div class="flagContainer">
+                        @if (Model.Sprays.ElementAt(i).Fading)
+                        {
+                            <span class="label label-success fadingFlag" title="Fading"><i class="icon-random icon-white"></i></span>
+                        }
+
+                        @if (Model.Sprays.ElementAt(i).Animated)
+                        {
+                            <span class="label label-info animatedFlag" title="Animated"><i class="icon-play icon-white"></i></span>
+                        }
+
+                        @if (Model.Sprays.ElementAt(i).Safeness == SpraySite.Models.Safeness.SKETCHY)
+                        {
+                            <span class="label label-warning nsfwFlag"><i class="icon-eye-open icon-white"></i> SKETCHY</span>
+                        }
+
+                        @if (Model.Sprays.ElementAt(i).Safeness == SpraySite.Models.Safeness.NSFW)
+                        {
+                            <span class="label label-important nsfwFlag"><i class="icon-eye-open icon-white"></i> NSFW</span>
+                        }
+
+                        @if (Model.Sprays.ElementAt(i).Saves > 0)
+                        {
+                            <span class="label label-warning savesFlag" title="Saves"><i class="icon-star icon-white"></i> @Model.Sprays.ElementAt(i).Saves</span>
+                        }
+
+                    </div>
+                    <div class="imageDiv farImage">
+                        <img src="@Model.Sprays.ElementAt(i).PreviewImage" alt="@Model.Sprays.ElementAt(i).Id Preview" />
+                    </div>
+
+                    @if (Model.Sprays.ElementAt(i).Fading)
+                    {
+                        <div class="imageDiv nearImage">
+                            <img src="@Model.Sprays.ElementAt(i).PreviewImageNear" alt="@Model.Sprays.ElementAt(i).Id Near Preview" />
+                        </div>
+                    }
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    if (i % 3 == 2 || i == Model.Sprays.Count - 1)
+    {
+        @:</div>
+    }
+
+}

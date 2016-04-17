@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    @Html.Partial("_Ads")
+    @Html.Partial("_Navigation")
+
+@*<div class="alert alert-info text-center">
+    <strong>Do you speak Korean? I don't!</strong> 한국어로이 사이트를 번역! <a href="https://bitbucket.org/CodyJung/spraymakerv3/issue/23/provide-korean-site-translation">Comment here if you want to help translate the site!</a>
+</div>*@
+
+    @*<div class="alert alert-info text-center">
+        <strong>Where's the gallery?</strong> - <a href="/Browse/Newest">Click here for more info</a>
+    </div>*@
+
+    <div class="container">
+        @RenderBody()
+
+        @Html.Partial("_Footer")
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/smjs")
+    <script type="text/javascript" src="@Url.Content("/signalr/hubs")"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

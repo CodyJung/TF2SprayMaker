@@ -1,0 +1,128 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{87894FC8-4B38-49FC-B796-C175C6B1798B}"
+	ProjectSection(SolutionItems) = preProject
+		Externals\ICSharpCode.SharpZipLib.dll = Externals\ICSharpCode.SharpZipLib.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprayGenerator", "VTFGenerator\SprayGenerator.csproj", "{DF8366E3-407E-48A7-AE23-922A6EE3F84E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprayGeneratorTests", "SprayEngineTest\SprayGeneratorTests.csproj", "{78385FD2-8088-4027-8423-7190E22D3094}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2B77DE-7BFC-48F0-B252-5ED60BCBFAD5}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		SprayMakerVersion3.vsmdi = SprayMakerVersion3.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagedSquish", "ManagedSquish", "{010C7F44-930A-4810-BDB6-D7307648591F}"
+	ProjectSection(SolutionItems) = preProject
+		Externals\managedsquish\ManagedSquish.dll = Externals\managedsquish\ManagedSquish.dll
+		Externals\managedsquish\ManagedSquish.pdb = Externals\managedsquish\ManagedSquish.pdb
+		Externals\managedsquish\ManagedSquish.XML = Externals\managedsquish\ManagedSquish.XML
+		Externals\managedsquish\NativeSquish_x64.dll = Externals\managedsquish\NativeSquish_x64.dll
+		Externals\managedsquish\NativeSquish_x64.pdb = Externals\managedsquish\NativeSquish_x64.pdb
+		Externals\managedsquish\NativeSquish_x86.dll = Externals\managedsquish\NativeSquish_x86.dll
+		Externals\managedsquish\NativeSquish_x86.pdb = Externals\managedsquish\NativeSquish_x86.pdb
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpraySite", "SpraySite\SpraySite.csproj", "{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamWebAPI", "Externals\SteamWebApi\SteamWebAPI.csproj", "{D846D108-D95B-4488-BA01-E487DA220C17}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SprayMakerVersion3.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|Win32.ActiveCfg = Release|Any CPU
+		{DF8366E3-407E-48A7-AE23-922A6EE3F84E}.Release|x64.ActiveCfg = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|Win32.ActiveCfg = Release|Any CPU
+		{78385FD2-8088-4027-8423-7190E22D3094}.Release|x64.ActiveCfg = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|Win32.ActiveCfg = Release|Any CPU
+		{4657E0D8-4AFC-4A08-BDF3-8F3CD5490B82}.Release|x64.ActiveCfg = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D846D108-D95B-4488-BA01-E487DA220C17}.Release|x64.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{010C7F44-930A-4810-BDB6-D7307648591F} = {87894FC8-4B38-49FC-B796-C175C6B1798B}
+		{D846D108-D95B-4488-BA01-E487DA220C17} = {87894FC8-4B38-49FC-B796-C175C6B1798B}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = SteamCondenser\SteamCondenser.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.TabWidth = 4
+		$1.RemoveTrailingWhitespace = True
+		$1.EolMarker = Unix
+		$1.inheritsSet = Mono
+		$1.inheritsScope = text/plain
+		$1.scope = text/plain
+		$0.StandardHeader = $2
+		$2.Text = 
+		$2.IncludeInNewFiles = False
+		$0.VersionControlPolicy = $3
+		$3.inheritsSet = Mono
+		$0.ChangeLogPolicy = $4
+		$4.UpdateMode = None
+		$4.MessageStyle = $5
+		$5.LineAlign = 0
+		$4.inheritsSet = Mono
+	EndGlobalSection
+EndGlobal

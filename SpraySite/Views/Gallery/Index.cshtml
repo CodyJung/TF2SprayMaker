@@ -1,0 +1,44 @@
+﻿@model long
+
+@{
+    ViewBag.Title = "View Spray - Spray Maker v3";
+}
+
+<div class="alert alert-warning text-center">
+    This spray was imported from Spray Maker version 2. It is unlisted and can only be accessed by this link.
+</div>
+
+<div class="row">
+    <div class="span6">
+
+        <h2>Old Spray</h2>
+
+        <div class="row">
+            <div id="linksDiv" class="text-center">
+                <!-- CHANGEME - Change this bucket -->
+                <a id="downloadLink" class="btn btn-small btn-primary" href="@String.Format("https://s3.amazonaws.com/oldsprays/spray/{0}.vtf", Model)">Download .VTF spray</a>
+                <a id="vmtLink" class="btn btn-small" href="@Url.Action("VMT", "Gallery", new { id = Model })">Download .VMT texture</a>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            To install, save both the VTF and VMT files to:<br />
+            <code><abbr title="Win: C:\Program Files (x86)\Steam&#13;Mac: &#126;/Library/Application Support/Steam&#13;Linux: &#126;/.local/share/Steam">&lt;Steam folder&gt;</abbr>\steamapps\common\Team Fortress 2\tf\materials\vgui\logos\</code>
+        </div>
+    </div>
+
+    <div class="span6">
+
+        <h2>Preview</h2>
+        <div class="previewContainer">
+            <div class="imageWrapper">
+                <div class="flagContainer">
+                </div>
+                <div class="imageDiv farImage">
+                    <!-- CHANGEME - Change this bucket -->
+                    <img src="@String.Format("https://s3.amazonaws.com/oldsprays/preview/{0}.gif", Model)" alt="Old Spray" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

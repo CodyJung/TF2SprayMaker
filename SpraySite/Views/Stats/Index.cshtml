@@ -1,0 +1,31 @@
+﻿@model SpraySite.Models.Stats
+
+@{
+    ViewBag.Title = "Stats - Spray Maker v3";
+}
+
+<!-- Highcharts needs this here, unfortunately -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="@Url.Content("~/Scripts/Highcharts-2.2.1/js/highcharts.js")" type="text/javascript"></script>
+
+<div class="row">
+    <div class="page-header">
+        <h1>Statistics <small>Last generated at @Model.LastGenerated.ToShortTimeString()</small></h1>
+    </div>
+
+    <div class="span6">
+        <h3>Total Sprays: @Model.TotalSprays</h3>
+        <h3>Total Users: @Model.NumUsers</h3>
+
+        @((Object)Model.PublishedChart)
+
+        @((Object)Model.SprayTypeChart)
+
+    </div>
+
+    <div class="span6">
+        @((Object)Model.AnonymousChart)
+
+        @((Object)Model.WeeklyChart)
+    </div>
+</div>

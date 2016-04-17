@@ -1,0 +1,29 @@
+﻿@model SpraySite.Models.SprayListModel
+
+@{
+    ViewBag.Title = "Manage Sprays - Spray Maker v3";
+}
+
+@Html.Partial("ManageLoop")
+
+@section scripts{
+<script type="text/javascript" src="@Url.Content("~/Scripts/smscripts/sm.manage.js")"></script>
+}
+
+<ul class="pager">
+    @if (Model.Start == 0){
+        <li class="disabled"><a href="#">Newer</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("Newest", "Browse", new { after = Model.Prev })">Newer</a></li>   
+    }
+
+    @if (Model.Start == Model.Next){
+        <li class="disabled"><a href="#">Older</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("Newest", "Browse", new { after = Model.Next })">Older</a></li>
+    }
+</ul>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DotNet.Highcharts</id>
+    <version>1.2</version>
+    <title>DotNet.Highcharts</title>
+    <authors>Vangel Kolarov</authors>
+    <owners>Vangel Kolarov</owners>
+    <licenseUrl>http://dotnethighcharts.codeplex.com/license</licenseUrl>
+    <projectUrl>http://dotnethighcharts.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DotNet.Highcharts offers Highcharts integration with ASP.NET applications. The package also include javascript files for Highcharts version 2.2.1</description>
+    <releaseNotes>This version has the following changes:
+- Tested and adapted to the latest version of Highcharts 2.2.1
+- Fixed Issue 359: Not implemented serialization array of type: System.Drawing.Color[]
+- Fixed Issue 364: Crosshairs defined as array of CrosshairsForamt generates bad Highchart code</releaseNotes>
+    <tags>Highcharts, ASP.NET</tags>
+    <references>
+      <reference file="DotNet.Highcharts.dll" />
+    </references>
+  </metadata>
+</package>

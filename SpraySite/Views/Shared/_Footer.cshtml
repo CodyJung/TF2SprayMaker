@@ -1,0 +1,22 @@
+﻿<div class="row" id="footer">
+    <div class="span12">
+
+        @if(ViewBag.AdultAds != true && ViewBag.NoAds != true)
+        {
+        <div class="well well-small">
+            <!-- CHANGEME - Regular ads go here -->
+        </div>
+        } else if(ViewBag.NoAds != true) {
+            <div class="well well-small">
+            <!-- CHANGEME - "Adult" ad code goes here -->
+            </div>
+        } else {
+        }
+
+        <div class="well well-small">
+            <small>TF2 Spray Maker is not affiliated with Valve or TeamFortress.com (may they never go hatless). The TF2 logo is property of Valve. All content is user-uploaded and is copyright its original owner.
+            If you would like your intellectual property removed, please contact dmca a codyjung d com.
+            </small>
+        </div>
+    </div>
+</div>

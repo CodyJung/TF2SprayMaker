@@ -1,0 +1,27 @@
+﻿@model SpraySite.Models.SprayListModel
+
+@{
+    ViewBag.Title = "Browse Sprays - Spray Maker v3";
+}
+
+@Html.Partial("BrowseNav")
+
+@Html.Partial("BrowseLoop")
+
+<ul class="pager">
+    @if (Model.Start == 0){
+        <li class="disabled"><a href="#">More Saves</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("TopNSFW", "Browse", new { after = Model.Prev })">More Saves</a></li>   
+    }
+
+    @if (Model.Start == Model.Next){
+        <li class="disabled"><a href="#">Fewer Saves</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("TopNSFW", "Browse", new { after = Model.Next })">Fewer Saves</a></li>
+    }
+</ul>

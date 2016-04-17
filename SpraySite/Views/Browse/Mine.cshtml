@@ -1,0 +1,32 @@
+﻿@model SpraySite.Models.SprayListModel
+
+@{
+    ViewBag.Title = "My Sprays - Spray Maker v3";
+}
+
+<h2>My Sprays</h2>
+
+@if (Model.Sprays.Count == 0)
+{
+    <p class="lead">You haven't made any sprays! <a href="@Url.Action("Static", "Create")">Make one now?</a></p>
+}
+
+@Html.Partial("BrowseLoop")
+
+<ul class="pager">
+    @if (Model.Start == 0){
+        <li class="disabled"><a href="#">Newer</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("Mine", "Browse", new { after = Model.Prev })">Newer</a></li>   
+    }
+
+    @if (Model.Start == Model.Next){
+        <li class="disabled"><a href="#">Older</a></li> 
+    } 
+    else
+    {
+        <li><a href="@Url.Action("Mine", "Browse", new { after = Model.Next })">Older</a></li>
+    }
+</ul>

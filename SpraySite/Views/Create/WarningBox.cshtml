@@ -1,0 +1,11 @@
+﻿<div class="row" id="warningRow">
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="span12 alert text-center">
+            <strong>Warning!</strong> You're not logged in. Any sprays you make will only be saved for <strong>one week</strong>.
+        </div>
+    }
+    <div id="badBrowserWarning" class="span12 alert alert-error text-center hide">
+        <strong>Warning!</strong> Your browser does not support HTML5 file uploads. We suggest upgrading to <a href="http://chrome.google.com">Google Chrome</a> or <a href="http://ie.microsoft.com">IE 10</a>.
+    </div>
+</div>

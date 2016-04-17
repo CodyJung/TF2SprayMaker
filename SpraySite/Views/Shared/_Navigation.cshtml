@@ -1,0 +1,65 @@
+﻿<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="@Url.Action("Index", "Home")"><img alt="Spray Maker - Home" src="@Url.Content("~/Content/Images/logo.png")" width="17" height="20" /> Spray Maker</a>
+
+            <ul class="nav">
+@*                <li class="@(ViewBag.CurrentPage == "default" ? "active" : "")">
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>*@
+
+                <li class="@(ViewBag.CurrentPage == "create" ? "active" : "")">
+                    <a href="@Url.Action("Static", "Create")">Create a Spray</a>
+                </li>
+
+                <li class="@(ViewBag.CurrentPage == "createFading" ? "active" : "")">
+                    <a href="@Url.Action("Fading", "Create")">Create a Fading Spray</a>
+                </li>
+
+                @*<li class="@(ViewBag.CurrentPage == "browse" ? "active" : "")">
+                    <a href="@Url.Action("Newest", "Browse")">Browse Gallery</a>
+                </li>*@
+
+                @if(Request.IsAuthenticated)
+                {
+                <li class="@(ViewBag.CurrentPage == "saved" ? "active" : "")">
+                    <a href="@Url.Action("Saved", "Browse")">Saved Sprays</a>
+                </li>
+
+                <li class="@(ViewBag.CurrentPage == "mine" ? "active" : "")">
+                    <a href="@Url.Action("Mine", "Browse")">My Sprays</a>
+                </li>
+                }
+            </ul>
+
+            <ul class="nav pull-right">
+
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@ViewBag.UserName<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="@Url.Action("LogOff", "Account")">Log Off</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li><span class="brand" data-toggle="dropdown">
+                        <img src="@ViewBag.AvatarUrl" alt="User avatar" width="23" height="23" border="0" /></span>
+                    </li>
+                        
+                }
+                else
+                {
+                    <li>
+                        <a class="brand" href="@Url.Action("OpenId", "Account")">
+                            <img src="@Url.Content("~/Content/Images/sits_small.png")" alt="Sign in through Steam" width="154" height="23" border="0" /></a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
